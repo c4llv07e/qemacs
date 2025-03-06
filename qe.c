@@ -11950,6 +11950,11 @@ int main(int argc, char **argv)
     QEArgs args;
     int status;
 
+    /* Exit if was opened without terminal capabilities */
+    if (!isatty(STDOUT_FILENO)) {
+        return -1;
+    }
+
     args.qs = qs;
     args.argc = argc;
     args.argv = argv;
